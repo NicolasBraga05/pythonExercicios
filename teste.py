@@ -657,30 +657,230 @@ local = Retangulo(medidaA, medidaB)
 calcula_local = medidaA * medidaB / piso_ao_quadrado
 
 print(f'Vao ser necessarios [{calcula_local}] pisos')
-"""
+
 
 
 
 #4
-import request
+class Pessoa:
+
+    def __init__(self: object, nome: str, idade: int, peso: float, altura: int):
+        self.__nome = nome
+        self.__idade = idade
+        self.__peso = peso
+        self.__altura = altura
 
 
-if len(cep) == 8:
-    link = f'https://viacep.com.br/ws/{cep}/json/'
+    def envelhecer(self, anos: int):
+        self.__idade += anos
+        anos *= 0.5
+        self.__altura += anos
 
-    requisicao = requests.get(link)
+    def engordar(self, kilos):
+        self.__peso += kilos
 
-    print(requisicao)
+    def emagrecer(self, kilos):
+        self.__peso -= kilos
 
-    dic_requisicao = requisicao.json()
+    def crescer(self, centimetros):
+        self.__altura += centimetros
 
-    uf = dic_requisicao['uf']
-    cidade = dic_requisicao['localidade']
-    bairro = dic_requisicao['bairro']
-    print(dic_requisicao)
-else:
-    print("CEP Inválido")
+    def mostrarNome(self):
+        return self.__nome
 
+    def mostraIdade(self):
+        return self.__idade
+
+    def mostraPeso(self):
+        return self.__peso
+
+    def mostraAltura(self):
+        return self.__altura
+
+    def mostraTudo(self):
+        return f'Nome: {self.__nome} | Idade: {self.__idade} anos | Peso: {self.__peso}kg | Altura: {self.__altura}cm'
+
+
+
+
+#5
+class ContaCorrente:
+
+    contas = {}
+
+    def __init__(self: object, numeroConta: int, nomeCorrentista: str, saldo: float = 0):
+        self.__numeroConta = numeroConta
+        self.__nomeCorrentista = nomeCorrentista
+        self.__saldo = saldo
+        ContaCorrente.contas[numeroConta] = self
+
+    def alterarNome(self: object, novoNome: str):
+        self.__nomeCorrentista = novoNome
+
+    def deposito(self: object, numeroContaDestino: int, valor: float):
+        if valor > 0:
+            numeroContaDestino = ContaCorrente.contas.get(numeroContaDestino)
+            if numeroContaDestino:
+                numeroContaDestino.__saldo += valor
+                self.__saldo -= valor
+            else:
+                print(f'O numero da conta [{numeroContaDestino}] nao existe.')
+        else:
+            print('O valor do deposito deve ser maior que zero.')
+
+
+    def saque(self: object, valor: float):
+        if valor > 0:
+            if self.__saldo > valor:
+                self.__saldo -= valor
+            else:
+                print('O correntista nao possui o saldo para efetuar o saque!')
+        else:
+            print('Informe um valor maior que zero.')
+
+    def mostrarConta(self: object):
+        return f'Numero da conta: {self.__numeroConta} | Nome do correntista: {self.__nomeCorrentista} | Saldo: {self.__saldo}'
+
+conta1 = ContaCorrente(1234567, 'Nicolas', 2300.50)
+conta2 = ContaCorrente(7654321, 'Vanderlei', 70000.50)
+
+conta1.deposito(7654321, 1000.50)
+print(conta1.mostrarConta())
+print(conta2.mostrarConta())
+
+
+
+
+#6
+class Tv:
+
+    def __init__(self: object, canal: int, volume: int ):
+        self.__canal = canal
+        self.__volume = volume
+
+
+    def mudaCanal(self: object, novoCanal: int):
+        if novoCanal > 0:
+            if novoCanal < 100:
+                self.__canal = novoCanal
+            else:
+                print(f'Canal [{novoCanal}] nao disponivel')
+        else:
+            print(f'Informe um canal valido (de 0 a 100)')
+
+    def mudaVolume(self: object, novoVolume):
+        if novoVolume > 0:
+            if novoVolume < 100:
+                self.__canal = novoVolume
+            else:
+                print(f'Volume nao dispoviel, informe um volume valido (0 a 100)')
+        else:
+            print(f'Informe um volume valido (0 a 100)')
+
+tv = Tv(40, 100)
+
+tv.mudaCanal(1000)
+
+
+
+
+#7
+class BichinhoVirtual:
+
+
+    def __init__(self: object, nome: str, satisfacao: int = 0, saude: int = 0, idade: int = 0): # Bug nesta linha, parametro idade nao pode ser obrigatorio
+        self.__nome = nome
+        self.__satisfacao = satisfacao
+        self.__saude = saude
+        self.__idade = idade
+
+    def alterarNome(self: object, nome: str):
+        self.__nome = nome
+
+    def mostraNome(self):
+        return self.__nome
+
+    def alterarFome(self: object, satisfacao: int):
+        self.__satisfacao = satisfacao
+
+    def mostraFome(self):
+        return self.__satisfacao
+
+    def alterarSaude(self: object, saude: int):
+        self.__saude = saude
+
+    def mostraSaude(self):
+        return self.__saude
+
+    def alterarIdade(self: object, idade: int):
+        self.__idade = idade
+
+    def mostraIdade(self: object):
+        return self.__idade
+
+    def mostraHumor(self):
+        if self.__satisfacao + self.__saude >= 180:
+            print(f'O Tamagushi esta MUITO feliz {'\U0001F604'}')
+            print(f'Ele esta com o humor de [{(self.__satisfacao + self.__saude) / 2}]')
+        elif self.__satisfacao + self.__saude >= 150:
+            print(f'O Tamagushi esta feliz {'\U0001F60A'}')
+            print(f'Ele esta com o humor de [{(self.__satisfacao + self.__saude) / 2}]')
+        elif self.__satisfacao + self.__saude >= 100:
+            print(f'O Tamagushi nao esta nem triste e nem feliz {'\U0001F610'}')
+            print(f'Ele esta com o humor de [{(self.__satisfacao + self.__saude) / 2}]')
+        elif self.__satisfacao + self.__saude >= 50:
+            print(f'O Tamagushi esta triste {'\U0001F641'}')
+            print(f'Ele esta com o humor de [{(self.__satisfacao + self.__saude) / 2}]')
+        elif self.__satisfacao + self.__saude >= 0:
+            print(f'O Tamagushi esta MUITO triste {'\U0001F62D'}')
+            print(f'Ele esta com o humor de [{(self.__satisfacao + self.__saude) / 2}]')
+        else:
+            print('Valores citados incompativeis!!!')
+
+    def mostraTudo(self: object):
+        print(f'O nome do Tamagushi eh {self.__nome}')
+        print(f'O/A {self.__nome} esta [{self.__satisfacao}%] satisfeito')
+        print(f'O/A {self.__nome} esta [{self.__saude}%] saudavel')
+        print(f'O/A {self.__nome} tem [{self.__idade}] anos')
+
+
+
+bicho = BichinhoVirtual('perola', 50, 50, 10)
+
+bicho.mostraTudo()
+bicho.mostraHumor()
+"""
+
+
+
+#8
+class Macaco:
+
+
+    def __init__(self: object, nome: str, bucho: list):
+        self.__nome = nome
+        self.__bucho = bucho
+
+    def comer(self: object, comida: str):
+        if comida != ['macaco', 'Macaco', 'MACACO']:
+            self.__bucho.append(comida)
+        else:
+            print('Macacos nao sao canibais!')
+
+    def verBucho(self: object):
+        return f'O bucho do macaco contem {self.__bucho}'
+
+    def digerir(self: object):
+        self.__bucho.clear()
+
+
+macaco = Macaco('Fakeys', [])
+
+macaco.comer('banana')
+print(macaco.verBucho())
+macaco.digerir()
+print(macaco.verBucho())
+    
 
 
 

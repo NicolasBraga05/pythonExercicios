@@ -1,8 +1,6 @@
-
+""""""""
 from random import randint
 from time import sleep
-
-
 
 
 def jogo_de_dados(*args):
@@ -51,3 +49,5 @@ def jogo_de_dados(*args):
 
 
 jogo_de_dados()
+
+
