@@ -55,29 +55,47 @@ print(carro.mostraNivelTanque())
 
 
 from main import Funcionario
+from time import sleep
 
-nome = str(input('Informe o nome do funcionario: \n'))
-salario = float(input('Informe o salario do funcionario: (ex: 1234.34)\n'))
 
-clt = Funcionario(nome, salario)
+def main():
 
-menu = int(input('1- Para mostrar o nome | 2- Para mostrar o salario | 3- Para sair do programa: \n'))
+    nome = str(input('Informe o nome do funcionario: \n'))
+    salario = float(input('Informe o salario do funcionario: (ex: 1234.34)\n'))
+    clt = Funcionario(nome, salario)
 
-while True:
-    if menu == 1:
-        print(clt.mostraNome())
-        menu = int(input('1- Para mostrar o nome | 2- Para mostrar o salario | 3- Para sair do programa: \n'))
-    elif menu == 2:
-        print(clt.mostraSalario())
-        menu = int(input('1- Para mostrar o nome | 2- Para mostrar o salario | 3- Para sair do programa: \n'))
-    elif menu == 3:
-        print('Programa encerrado')
-        break
+    menu = int(input(
+        '1- Para mostrar o nome | 2- Para mostrar o salario | 3- Para acrescentar um aumento em % | 4- Para sair do programa: \n'))
+    sleep(1)
 
-    else:
-        print('Selecione uma opcao valida')
-        menu = input('1- Para mostrar o nome | 2- Para mostrar o salario | 3- Para sair do programa: \n')
+    while True:
+        if menu == 1:
+            print(clt.mostraNome())
+            sleep(1)
+            menu = int(input('1- Para mostrar o nome | 2- Para mostrar o salario | 3- Para acrescentar um aumento em % | 4- Para sair do programa: \n'))
+        elif menu == 2:
+            print(clt.mostraSalario())
+            sleep(1)
+            menu = int(input('1- Para mostrar o nome | 2- Para mostrar o salario | 3- Para acrescentar um aumento em % | 4- Para sair do programa: \n'))
+
+        elif menu == 3:
+            aumento = int(input('Informe quantos % o salario sera aumentado: \n'))
+            clt.aumentoSalario(aumento)
+            sleep(1)
+            menu = int(input('1- Para mostrar o nome | 2- Para mostrar o salario | 3- Para acrescentar um aumento em % | 4- Para sair do programa: \n'))
+        elif menu == 4:
+            print('Programa encerrado')
+            break
+
+        else:
+            print('Selecione uma opcao valida')
+            sleep(1)
+            menu = int(input('1- Para mostrar o nome | 2- Para mostrar o salario | 3- Para acrescentar um aumento em % | 4- Para sair do programa: \n'))
 """
+
+
+
+
 
 
 

@@ -1108,7 +1108,104 @@ class Funcionario:
     def mostraSalario(self: object):
         return (f'O salario do funcionario: \n'
                 f'{self.__nome} | R${self.__salario}')
+
+
+
+
+#14
+class Funcionario:
+
+    def __init__(self: object, nome: str, salario: float):
+        self.__nome = nome
+        self.__salario = salario
+
+    def mostraNome(self: object):
+        return (f'O nome do funcionario: \n'
+                f'{self.__nome}')
+
+    def mostraSalario(self: object):
+        return (f'O salario do funcionario: \n'
+                f'{self.__nome} | R${self.__salario}')
+    def aumentoSalario(self: object, valor: float):
+        if valor > 0:
+            self.__salario += (self.__salario * valor) / 100
+        else:
+            print('Informe um valor maior que zero!')
+
+
+
+
+#15
+class BichinhoVirtualMelhorado:
+
+
+    def __init__(self: object, nome: str, satisfacao: int = 0, saude: int = 0, idade: int = 0, atencao: int = 0):
+        self.__nome = nome
+        self.__satisfacao = satisfacao
+        self.__saude = saude
+        self.__idade = idade
+        self.__atencao = atencao
+
+    def alterarNome(self: object, nome: str):
+        self.__nome = nome
+
+    def mostraNome(self):
+        return self.__nome
+
+    def alterarFome(self: object, satisfacao: int):
+        self.__satisfacao = satisfacao
+
+    def mostraFome(self):
+        return self.__satisfacao
+
+    def alterarSaude(self: object, saude: int):
+        self.__saude = saude
+
+    def mostraSaude(self):
+        return self.__saude
+
+    def alterarIdade(self: object, idade: int):
+        self.__idade = idade
+
+    def mostraIdade(self: object):
+        return self.__idade
+
+    def alteraSatisfacao(self: object, satisfacao: int):
+        self.__satisfacao = satisfacao
+
+    def mostraSatisfacao(self: object):
+        return self.__satisfacao
+
+    def mostraHumor(self):
+        if self.__satisfacao + self.__atencao >= 180:
+            print(f'O Tamagushi esta MUITO feliz {'\U0001F604'}')
+            print(f'Ele esta com o humor de [{(self.__satisfacao + self.__atencao) / 2}]')
+        elif self.__satisfacao + self.__atencao >= 150:
+            print(f'O Tamagushi esta feliz {'\U0001F60A'}')
+            print(f'Ele esta com o humor de [{(self.__satisfacao + self.__atencao) / 2}]')
+        elif self.__satisfacao + self.__atencao >= 100:
+            print(f'O Tamagushi nao esta nem triste e nem feliz {'\U0001F610'}')
+            print(f'Ele esta com o humor de [{(self.__satisfacao + self.__atencao) / 2}]')
+        elif self.__satisfacao + self.__atencao >= 50:
+            print(f'O Tamagushi esta triste {'\U0001F641'}')
+            print(f'Ele esta com o humor de [{(self.__satisfacao + self.__atencao) / 2}]')
+        elif self.__satisfacao + self.__atencao >= 0:
+            print(f'O Tamagushi esta MUITO triste {'\U0001F62D'}')
+            print(f'Ele esta com o humor de [{(self.__satisfacao + self.__atencao) / 2}]')
+        else:
+            print('Valores citados incompativeis!!!')
+
+    def mostraTudo(self: object):
+        print(f'O nome do Tamagushi eh {self.__nome}')
+        print(f'O/A {self.__nome} esta [{self.__satisfacao}%] satisfeito')
+        print(f'O/A {self.__nome} esta [{self.__saude}%] saudavel')
+        print(f'O/A {self.__nome} tem [{self.__idade}] anos')
+        print(f'O/A {self.__nome} recebeu [{self.__atencao}%] de atencao')
 """
+
+#16
+
+
 
 
 
