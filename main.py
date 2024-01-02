@@ -1203,7 +1203,7 @@ class BichinhoVirtualMelhorado:
         print(f'O/A {self.__nome} recebeu [{self.__atencao}%] de atencao')
 """
 
-#16
+#16 #teste
 
 
 
